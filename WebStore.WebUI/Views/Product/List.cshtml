@@ -1,0 +1,18 @@
+﻿@model WebStore.WebUI.Models.ProductsListViewModel
+
+@{
+    ViewBag.Title = "Produkty"; //komentarz: zmiana tytułu strony
+}
+
+@foreach (var p in Model.Products) //utworzenie prostej listy
+{
+    @Html.Partial("ProductSummary", p);
+}
+
+<div class=" btn-group pull-right"> 
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory })) 
+</div>
+
+    <div class="pager">
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new {page = x}))
+    </div>
