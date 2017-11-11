@@ -107,5 +107,70 @@ namespace WebStore.UnitTests
             Assert.IsTrue(result[0].Name == "P2" && result[0].Category == "Cat2");
             Assert.IsTrue(result[1].Name == "P4" && result[1].Category == "Cat2");
         }
+        [TestMethod]
+        public void Can_Create_Categories()
+        {
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new Product[]
+            {
+                new Product { ProductId = 1, Name = "P1", Category = "Jabłka" },
+                new Product { ProductId = 2, Name = "P2", Category = "Jabłka"  },
+                new Product { ProductId = 3, Name = "P3", Category = "Śliwki"  },
+                new Product { ProductId = 4, Name = "P4", Category = "Pomarańscze"  },
+            });
+
+            NavController target = new NavController(mock.Object);
+            string[] results = ((IEnumerable<string>)target.Menu().Model).ToArray();
+
+            Assert.AreEqual(results.Length, 3);
+            Assert.AreEqual(results[0], "Jabłka");
+            Assert.AreEqual(results[1], "Pomarańcze");
+            Assert.AreEqual(results[2], "Śliwki");
+        }
+        [TestMethod]
+        public void Indicates_Selected_Category()
+        {
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new Product[]
+            {
+                new Product { ProductId = 1, Name = "P1", Category = "Jabłka" },
+                new Product { ProductId = 4, Name = "P2", Category = "Pomarańscze"  },
+            });
+
+            NavController target = new NavController(mock.Object);
+
+            string categoryToSelect = "Jabłka";
+
+            string result = target.Menu(categoryToSelect).ViewBag.SelectedCategory;
+
+            Assert.AreEqual(categoryToSelect, result);
+
+        }
+        [TestMethod]
+        public void Generate_Category_Specific_Product_Count()
+        {
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new Product[]
+            {
+                new Product { ProductId = 1, Name = "P1", Category = "Jabłka" },
+                new Product { ProductId = 2, Name = "P2", Category = "Jabłka"  },
+                new Product { ProductId = 3, Name = "P3", Category = "Śliwki"  },
+                new Product { ProductId = 4, Name = "P4", Category = "Pomarańscze"  },
+                new Product { ProductId = 5, Name = "P5", Category = "Pomarańscze"  },
+            });
+
+            ProductController target = new ProductController(mock.Object);
+            target.PageSize = 3;
+
+            int res1 = ((ProductsListViewModel)target.List("Cat1").Model).PagingInfo.TotalItems;
+            int res2 = ((ProductsListViewModel)target.List("Cat2").Model).PagingInfo.TotalItems;
+            int res3 = ((ProductsListViewModel)target.List("Cat3").Model).PagingInfo.TotalItems;
+            int resAll = ((ProductsListViewModel)target.List(null).Model).PagingInfo.TotalItems;
+
+            Assert.AreEqual(res1, 2);
+            Assert.AreEqual(res2, 2);
+            Assert.AreEqual(res3, 1);
+            Assert.AreEqual(resAll, 5);
+        }
     }
 }

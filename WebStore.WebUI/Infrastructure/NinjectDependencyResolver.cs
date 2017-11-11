@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Configuration;
 using System.Web.Mvc;
 using Moq;
 using Ninject;
@@ -50,6 +51,15 @@ namespace WebStore.WebUI.Infrastructure
             //komentarz: powiązanie do repozytorium, które zastąpiło imitację
 
             kernel.Bind<IProductRepository>().To<EFProductRepository>();
+
+            EmailSettings emailSettings = new EmailSettings
+            {
+                WriteAsFile = bool.Parse(ConfigurationManager
+                .AppSettings["Email.WriteAsFile"] ?? "false")
+            };
+
+            kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
+                .WithConstructorArgument("settings", emailSettings);
         }
     }
 }
