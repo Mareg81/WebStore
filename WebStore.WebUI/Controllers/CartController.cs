@@ -29,7 +29,7 @@ namespace WebStore.WebUI.Controllers
         public RedirectToRouteResult AddToCart(Cart cart, int productId, string returnUrl)
         {
             Product product = repository.Products
-                .FirstOrDefault(p => p.ProductId == productId);
+                .FirstOrDefault(p => p.ProductID == productId);
             if (product != null)
             {
                 cart.AddItem(product, 1);
@@ -39,7 +39,7 @@ namespace WebStore.WebUI.Controllers
         public RedirectToRouteResult RemoveFromCart(Cart cart, int productId, string returnUrl)
         {
             Product product = repository.Products
-                .FirstOrDefault(p => p.ProductId == productId);
+                .FirstOrDefault(p => p.ProductID == productId);
             if (product != null)
             {
                 cart.RemoveLine(product);
