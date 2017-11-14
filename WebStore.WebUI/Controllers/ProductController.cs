@@ -21,7 +21,7 @@ namespace WebStore.WebUI.Controllers
 
         public ViewResult List(string category, int page = 1) //komentarz: [stronicowanie] 
         {
-            ProductsListViewModel model = new ProductsListViewModel
+            ProductsListViewModel viewModel = new ProductsListViewModel
             {
                 Products = repository.Products
                 .Where(p => category == null || p.Category == category)
@@ -33,12 +33,12 @@ namespace WebStore.WebUI.Controllers
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
                     TotalItems = category == null ?
-                    repository.Products.Count() :
-                    repository.Products.Where(e => e.Category == category).Count()
+                        repository.Products.Count() :
+                        repository.Products.Where(e => e.Category == category).Count()
                 },
                 CurrentCategory = category
             };
-            return View(model);
+            return View(viewModel);
         }
 
     }

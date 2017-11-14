@@ -8,7 +8,7 @@ namespace WebStore.Domain.Concrete
 {
     public class EmailSettings
     {
-        public string MailToAddress = "zamowienia@przyklad.pl";
+        public string MailToAddress = "m.grzes@onet.eu";
         public string MailFromAddress = "sklepinternetowy@przyklad.pl";
         public bool UseSsl = true;
         public string Username = "UżytkownikSmtp";
@@ -16,7 +16,7 @@ namespace WebStore.Domain.Concrete
         public string ServerName = "smtp.przyklad.pl";
         public int ServerPort = 587;
         public bool WriteAsFile = false;
-        public string FileLocation = @"c:\web_store_emails";
+        public string FileLocation = @"D:\Programowanie\Email";
     }
 
     public class EmailOrderProcessor : IOrderProcessor

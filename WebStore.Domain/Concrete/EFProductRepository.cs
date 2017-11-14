@@ -20,8 +20,7 @@ namespace WebStore.Domain.Concrete
             if (product.ProductID == 0)
             {
                 context.Products.Add(product);
-            } else
-            {
+            } else {
                 Product dbEntry = context.Products.Find(product.ProductID);
                 if (dbEntry != null) {
                     dbEntry.Name = product.Name;
@@ -31,6 +30,17 @@ namespace WebStore.Domain.Concrete
                 }
             }
             context.SaveChanges();
+        }
+
+        public Product DeleteProduct(int productID)
+        {
+            Product dbEntry = context.Products.Find(productID);
+            if (dbEntry != null)
+            {
+                context.Products.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
         }
     }
 }

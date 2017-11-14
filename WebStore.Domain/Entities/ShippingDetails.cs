@@ -7,7 +7,7 @@ namespace WebStore.Domain.Entities
         [Required(ErrorMessage = "Proszę podać nazwisko.")]
         public string Name { get; set;}
 
-        [Required(ErrorMessage = "Proszę podać pierwzzy wiersz adresu.")]
+        [Required(ErrorMessage = "Proszę podać pierwszy wiersz adresu.")]
         [Display(Name = "Wiersz 1")]
         public string Line1 { get; set;}
         [Display(Name = "Wiersz 2")]

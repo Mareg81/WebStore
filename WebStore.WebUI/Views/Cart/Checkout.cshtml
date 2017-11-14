@@ -20,7 +20,7 @@
 
     <h3>Adres</h3>
 
-    foreach (var property in ViewData.ModelMetaData.Properties)
+    foreach (var property in ViewData.ModelMetadata.Properties)
     {
         if (property.PropertyName != "Name" && property.PropertyName != "GiftWrap")
         {
@@ -40,7 +40,7 @@
     </div>
 
     <div class="text-center">
-        <input class="btn btn-primary" type="submit" value="Zakończ zamóienie" />
+        <input class="btn btn-primary" type="submit" value="Zakończ zamówienie" />
     </div>
 }
 

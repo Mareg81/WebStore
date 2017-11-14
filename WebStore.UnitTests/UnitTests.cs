@@ -21,11 +21,11 @@ namespace WebStore.UnitTests
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup(m => m.Products).Returns(new Product[]
             {
-                new Product {ProductId = 1, Name = "P1"},
-                new Product {ProductId = 2, Name = "P2"},
-                new Product {ProductId = 3, Name = "P3"},
-                new Product {ProductId = 4, Name = "P4"},
-                new Product {ProductId = 5, Name = "P5"},
+                new Product {ProductID = 1, Name = "P1"},
+                new Product {ProductID = 2, Name = "P2"},
+                new Product {ProductID = 3, Name = "P3"},
+                new Product {ProductID = 4, Name = "P4"},
+                new Product {ProductID = 5, Name = "P5"},
             });
 
             ProductController controller = new ProductController(mock.Object);
@@ -36,8 +36,8 @@ namespace WebStore.UnitTests
 
             Product[] prodArray = result.Products.ToArray();
             Assert.IsTrue(prodArray.Length == 2);
-            Assert.AreEqual(prodArray[0].Name, "P4");
-            Assert.IsTrue(prodArray.[1].Name, "P5");
+            Assert.AreEqual(prodArray[0].Name, "P4"); 
+            Assert.AreEqual(prodArray[1].Name, "P5");
         }
 
         [TestMethod]
@@ -67,11 +67,11 @@ namespace WebStore.UnitTests
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup(m => m.Products).Returns(new Product[]
             {
-                new Product {ProductId = 1, Name = "P1"},
-                new Product {ProductId = 2, Name = "P2"},
-                new Product {ProductId = 3, Name = "P3"},
-                new Product {ProductId = 4, Name = "P4"},
-                new Product {ProductId = 5, Name = "P5"},
+                new Product {ProductID = 1, Name = "P1"},
+                new Product {ProductID = 2, Name = "P2"},
+                new Product {ProductID = 3, Name = "P3"},
+                new Product {ProductID = 4, Name = "P4"},
+                new Product {ProductID = 5, Name = "P5"},
             });
 
             ProductController controller = new ProductController(mock.Object);
@@ -91,11 +91,11 @@ namespace WebStore.UnitTests
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup(m => m.Products).Returns(new Product[]
             {
-                new Product { ProductId = 1, Name = "P1", Category = "Cat1" },
-                new Product { ProductId = 2, Name = "P2", Category = "Cat2"  },
-                new Product { ProductId = 3, Name = "P3", Category = "Cat1"  },
-                new Product { ProductId = 4, Name = "P4", Category = "Cat2"  },
-                new Product { ProductId = 5, Name = "P5", Category = "Cat3"  },
+                new Product { ProductID = 1, Name = "P1", Category = "Cat1" },
+                new Product { ProductID = 2, Name = "P2", Category = "Cat2"  },
+                new Product { ProductID = 3, Name = "P3", Category = "Cat1"  },
+                new Product { ProductID = 4, Name = "P4", Category = "Cat2"  },
+                new Product { ProductID = 5, Name = "P5", Category = "Cat3"  },
             });
 
             ProductController controller = new ProductController(mock.Object);
@@ -113,10 +113,10 @@ namespace WebStore.UnitTests
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup(m => m.Products).Returns(new Product[]
             {
-                new Product { ProductId = 1, Name = "P1", Category = "Jabłka" },
-                new Product { ProductId = 2, Name = "P2", Category = "Jabłka"  },
-                new Product { ProductId = 3, Name = "P3", Category = "Śliwki"  },
-                new Product { ProductId = 4, Name = "P4", Category = "Pomarańscze"  },
+                new Product { ProductID = 1, Name = "P1", Category = "Jabłka" },
+                new Product { ProductID = 2, Name = "P2", Category = "Jabłka"  },
+                new Product { ProductID = 3, Name = "P3", Category = "Śliwki"  },
+                new Product { ProductID = 4, Name = "P4", Category = "Pomarańscze"  },
             });
 
             NavController target = new NavController(mock.Object);
@@ -133,8 +133,8 @@ namespace WebStore.UnitTests
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup(m => m.Products).Returns(new Product[]
             {
-                new Product { ProductId = 1, Name = "P1", Category = "Jabłka" },
-                new Product { ProductId = 4, Name = "P2", Category = "Pomarańscze"  },
+                new Product { ProductID = 1, Name = "P1", Category = "Jabłka" },
+                new Product { ProductID = 4, Name = "P2", Category = "Pomarańscze"  },
             });
 
             NavController target = new NavController(mock.Object);
@@ -152,11 +152,11 @@ namespace WebStore.UnitTests
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup(m => m.Products).Returns(new Product[]
             {
-                new Product { ProductId = 1, Name = "P1", Category = "Jabłka" },
-                new Product { ProductId = 2, Name = "P2", Category = "Jabłka"  },
-                new Product { ProductId = 3, Name = "P3", Category = "Śliwki"  },
-                new Product { ProductId = 4, Name = "P4", Category = "Pomarańscze"  },
-                new Product { ProductId = 5, Name = "P5", Category = "Pomarańscze"  },
+                new Product { ProductID = 1, Name = "P1", Category = "Jabłka" },
+                new Product { ProductID = 2, Name = "P2", Category = "Jabłka"  },
+                new Product { ProductID = 3, Name = "P3", Category = "Śliwki"  },
+                new Product { ProductID = 4, Name = "P4", Category = "Pomarańscze"  },
+                new Product { ProductID = 5, Name = "P5", Category = "Pomarańscze"  },
             });
 
             ProductController target = new ProductController(mock.Object);

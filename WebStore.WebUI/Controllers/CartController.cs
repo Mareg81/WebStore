@@ -62,7 +62,7 @@ namespace WebStore.WebUI.Controllers
             return PartialView(cart);
         }
 
-        public ViewResult Chekout()
+        public ViewResult Checkout()
         {
             return View(new ShippingDetails());
         }
