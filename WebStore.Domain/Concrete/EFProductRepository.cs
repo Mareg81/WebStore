@@ -23,7 +23,7 @@ namespace WebStore.Domain.Concrete
             } else
             {
                 Product dbEntry = context.Products.Find(product.ProductID);
-                IDictionary (dbEntry != null) {
+                if (dbEntry != null) {
                     dbEntry.Name = product.Name;
                     dbEntry.Description = product.Description;
                     dbEntry.Price = product.Price;

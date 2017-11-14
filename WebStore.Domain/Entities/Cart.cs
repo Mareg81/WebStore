@@ -11,7 +11,7 @@ namespace WebStore.Domain.Entities
         public void AddItem(Product product, int quantity)
         {
             CartLine line = lineCollection
-                .Where(p => p.Product.ProductId == product.ProductId)
+                .Where(p => p.Product.ProductID == product.ProductID)
                 .FirstOrDefault();
 
             if (line == null)
@@ -25,7 +25,7 @@ namespace WebStore.Domain.Entities
 
         public void RemoveLine(Product product)
         {
-            lineCollection.RemoveAll(l => l.Product.ProductId == product.ProductId);
+            lineCollection.RemoveAll(l => l.Product.ProductID == product.ProductID);
         }
 
         public decimal ComputeTotalValue ()

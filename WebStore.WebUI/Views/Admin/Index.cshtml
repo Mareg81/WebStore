@@ -17,7 +17,8 @@
                 <th class="NumericCol">Cena</th>
                 <th>Akcje</th>
             </tr>
-            @foreach (var item in Model) {
+            @foreach (var item in Model)
+            {
                 <tr>
                     <td>@item.ProductID</td>
                     <td>@Html.ActionLink(item.Name, "Edit", new { id = item.ProductID })</td>
