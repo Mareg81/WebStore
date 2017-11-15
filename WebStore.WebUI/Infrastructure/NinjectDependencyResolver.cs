@@ -10,6 +10,8 @@ using Ninject;
 using WebStore.Domain.Abstract;
 using WebStore.Domain.Concrete;
 using WebStore.Domain.Entities;
+using WebStore.WebUI.Infrastructure.Abstract;
+using WebStore.WebUI.Infrastructure.Concrete;
 
 namespace WebStore.WebUI.Infrastructure
 {
@@ -60,6 +62,8 @@ namespace WebStore.WebUI.Infrastructure
 
             kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
                 .WithConstructorArgument("settings", emailSettings);
+
+            kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
         }
     }
 }
