@@ -12,6 +12,7 @@
 
     @using (Html.BeginForm("Edit", "Admin")) { 
     <div class="panel-body">
+    @Html.HiddenFor(m => m.ProductID)
     @foreach (var property in ViewData.ModelMetadata.Properties)
     {
         if (property.PropertyName != "ProductID")

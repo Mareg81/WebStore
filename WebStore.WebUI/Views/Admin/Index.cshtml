@@ -21,7 +21,7 @@
             {
                 <tr>
                     <td>@item.ProductID</td>
-                    <td>@Html.ActionLink(item.Name, "Edit", new { id = item.ProductID })</td>
+                    <td>@Html.ActionLink(item.Name, "Edit", new { item.ProductID })</td>
                     <td class="NumericCol">@item.Price.ToString("c")</td>
                     <td>
                         @using (Html.BeginForm("Delete", "Admin"))
